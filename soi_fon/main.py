@@ -6,8 +6,6 @@ import sounddevice as sd
 from scipy.io.wavfile import write
 import numpy as np
 import speech_recognition as sr
-from gtts import gTTS
-from os import remove
 import time
 
 
@@ -26,7 +24,7 @@ def recording():
         time.sleep(0.1)
     print("stop")
     sd.stop()  # Wait until recording is finished
-    write('soi_fon/rec/output.wav', fs, my_rec)  # Save as WAV file // usando astype(np.int16) non registra nulla
+    write('soi_fon/rec/output.wav', fs, my_rec)  # Save as WAV file // using astype(np.int16) doesn't rec anything
     
     rec_path = "soi_fon/rec/output.wav"
     return rec_path
@@ -47,7 +45,7 @@ def speech2text(track):
     return text
 
 def speak(speech):
-    language = 'it'
+    language = 'en'
 
     output = gTTS(text=speech, lang=language, slow=False)
 
@@ -64,7 +62,7 @@ def speak(speech):
 # my_speech = speech2text(rec)
 # print(my_speech)
 
-# soi_fon_speech = "Ciao Albi, per fare questo test hai appena detto: {}".format(my_speech)
+# soi_fon_speech = "Hi Albi, to try this program you just said: {}".format(my_speech)
 
 # speak(soi_fon_speech)
 
